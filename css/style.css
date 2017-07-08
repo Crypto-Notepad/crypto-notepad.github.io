@@ -44,11 +44,22 @@ p {
 	color: #fff;
 }
 
-.content-width {
+@media (min-width: 768px)
+ {
+	 .content-width {
+	 	width: 66.66667%;
+	 	margin-right: auto !important;
+	 	margin-left: auto !important;
+	 }
+}
+
+
+
+/*.content-width {
 	width: 66.66667%;
 	margin-right: auto !important;
 	margin-left: auto !important;
-}
+}*/
 
 .button-success {
 	padding: .9em 1.25em;
@@ -95,7 +106,7 @@ p {
 	text-decoration: underline;
 }
 
-.pure-menu-link{
+.pure-menu-link {
 	color: #AAAAAA;
 }
 
@@ -109,10 +120,10 @@ p {
 	color: #AAAAAA;
 }
 
-hr{
+hr {
 	border: none;
 	background-color: #23272D;
-	color:  #23272D;
+	color: #23272D;
 	height: 2px;
 	width: 66.66667%;
 }
