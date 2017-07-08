@@ -44,7 +44,7 @@ p {
 	color: #fff;
 }
 
-@media (min-width: 768px)
+@media only screen and (min-width: 1024px)
  {
 	 .content-width {
 	 	width: 66.66667%;
@@ -52,8 +52,6 @@ p {
 	 	margin-left: auto !important;
 	 }
 }
-
-
 
 /*.content-width {
 	width: 66.66667%;
