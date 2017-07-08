@@ -1,0 +1,118 @@
+body {
+	background-image: url(/img/fabric.png), linear-gradient(#191c20, #24292e 15%);
+	background-repeat: repeat;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+	color: #ffffff;
+}
+
+p {
+	color: #AAAAAA;
+}
+
+.content-center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 50%;
+	padding: 20px;
+	color: white;
+	text-align: center;
+}
+
+#error-page .error-text {
+	font-size: 20px;
+	color: silver;
+}
+
+#error-page .error-header {
+	font-size: 40px;
+	color: white;
+}
+
+#error-page h1 {
+	font-size: 40px;
+	color: #fff;
+}
+
+.content-width {
+	width: 66.66667%;
+	margin-right: auto !important;
+	margin-left: auto !important;
+}
+
+.button-success {
+	padding: .9em 1.25em;
+	border-radius: .3em;
+	background-color: #1CB841;
+}
+
+.content-head {
+	margin: 0;
+}
+
+.content-margin {
+	margin-top: 20px;
+}
+
+.footer {
+	background: transparent;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	color: #aaa;
+}
+
+.footer a {
+	color: #d8d8d8;
+}
+
+.custom-ahref a {
+	text-decoration: none;
+}
+
+.contacts-icons a {
+	color: #D8D8D8;
+	padding-right: 10px;
+}
+
+.partners-icons a {
+	color: #D8D8D8;
+	padding-right: 10px;
+}
+
+.help-content a {
+	color: #D8D8D8;
+	text-decoration: underline;
+}
+
+.pure-menu-link{
+	color: #AAAAAA;
+}
+
+.pure-menu-list a:hover {
+	background-color: transparent;
+	color: #ffffff;
+}
+
+.pure-menu-list a:focus {
+	background-color: transparent;
+	color: #AAAAAA;
+}
+
+hr{
+	border: none;
+	background-color: #23272D;
+	color:  #23272D;
+	height: 2px;
+	width: 66.66667%;
+}
