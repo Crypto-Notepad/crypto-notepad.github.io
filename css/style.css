@@ -125,3 +125,26 @@ hr {
 	height: 2px;
 	width: 66.66667%;
 }
+
+#donate-page .content-center {
+	top: 30%!important;
+}
+
+#donate-page .donate-text {
+	margin-bottom: -20px;
+	text-decoration: underline;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+#donate-page .donate-text-2{
+	color: #E1E1E1;
+}
+
+#donate-page .link-color {
+    color: #4889BE;
+}
+
+#donate-page .donate-header {
+	padding-bottom: 25px;
+}
