@@ -94,6 +94,10 @@ p {
 	padding-right: 10px;
 }
 
+/* .contacts-icons {
+	padding-top: 20px;
+} */
+
 .partners-icons a {
 	color: #D8D8D8;
 	padding-right: 10px;
@@ -126,25 +130,25 @@ hr {
 	width: 66.66667%;
 }
 
-#donate-page .content-center {
+#support-section .content-center {
 	top: 30%!important;
 }
 
-#donate-page .donate-text {
+#support-section .donate-text {
 	margin-bottom: -20px;
 	text-decoration: underline;
 	font-weight: bold;
 	color: #ffffff;
 }
 
-#donate-page .donate-text-2{
+#support-section .donate-text-2{
 	color: #E1E1E1;
 }
 
-#donate-page .link-color {
+#support-section .link-color {
     color: #4889BE;
 }
 
-#donate-page .donate-header {
-	padding-bottom: 25px;
+#support-section .donate-header {
+	padding-bottom: 10px;
 }
