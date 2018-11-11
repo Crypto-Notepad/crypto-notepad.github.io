@@ -152,3 +152,9 @@ hr {
 #support-section .donate-header {
 	padding-bottom: 10px;
 }
+
+#support-section #donate-hide {
+	display: none;
+}
+
+  

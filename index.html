@@ -22,6 +22,18 @@
 	<link rel="stylesheet" href="css/marketing.min.css">
 	<!--<![endif]-->
 	<link rel="stylesheet" href="css/style.min.css">
+
+	<script type="text/javascript">
+	function showDonate() {
+	var x = document.getElementById("donate-hide");
+	if (x.style.display === "block") {
+	x.style.display = "none";
+	} else {
+	x.style.display = "block";
+	}
+	}
+	</script>
+
 </head>
 
 <body>
@@ -141,17 +153,21 @@
 
 					</div>
 
-					<p class="donate-text">PayPal</p>
-					<p><a class="link-color" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5N8EYFXJWZFG8">https://www.paypal.com/</a></p>
+					<img style="cursor: pointer;" onclick="showDonate()" src="img/donate_64.png"/>
 
-					<p class="donate-text">Bitcoin</p>
-					<p class="donate-text-2">19VeSigQeCJXcLiyp7voG9TYs5qPqiYQth</p>
+						<div id="donate-hide">				
+							<p title="Click to show QR Code" class="donate-text help-content">
+							<a target="_blank" href="img/bitcoin.png">Bitcoin</a></p>
+							<p class="donate-text-2">1N96oSa8nas332Koohfz7HVhR3XWj9WC63</p>
 
-					<p class="donate-text">Ether</p>
-					<p class="donate-text-2">0x276932029Eb218D3A9Ab9dc2f04b0DD0B6338403</p>
+							<p title="Click to show QR Code" class="donate-text help-content"><a target="_blank" href="img/ether.png">Ether</a></p>
+							<p class="donate-text-2">0x276932029Eb218D3A9Ab9dc2f04b0DD0B6338403</p>
+
+							<p title="Click to show QR Code" class="donate-text help-content"><a target="_blank" href="img/bitcoin_cash.png">Bitcoin Cash</a></p>
+							<p class="donate-text-2">qpwjh6xw8s69uxwmfd0u8yhlye8jkg60tunhq4n2el</p>
+						</div>
 
 				</div>
-
 			</div>
 		</div>
 	</div>
