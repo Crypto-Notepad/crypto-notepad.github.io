@@ -58,6 +58,27 @@ p {
 	background-color: #1CB841;
 }
 
+.button-paypal {
+	background: #036AB6;
+	color: #000000;
+	text-shadow: 1px 1px 1px rgb(105, 97, 97),
+		0 0 1em #F2FFFF;
+}
+
+.button-ko-fi {
+	background: #29ABE0;
+	color: #000000;
+	text-shadow: 1px 1px 1px rgb(105, 97, 97),
+		0 0 1em #F2FFFF;
+}
+
+.button-liberapay {
+	background: #F6C915;
+	color: #000000;
+	text-shadow: 1px 1px 1px rgb(105, 97, 97),
+		0 0 1em #F2FFFF;
+}
+
 .content-head {
 	margin: 0;
 }
