@@ -25,6 +25,26 @@
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
+<script>
+    const owner = 'Crypto-Notepad';
+    const repo = 'Crypto-Notepad';
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', function(){
+    const releases = JSON.parse(this.responseText);
+    let count = 0;
+    for (let i = 0; i < releases.length; ++i) {
+        for (let j = 0; j < releases[i].assets.length; ++j) {
+            count += releases[i].assets[j].download_count;
+        }
+    }
+    const paragraph = document.getElementById("downloads");
+    const text = document.createTextNode(`Total downloads: ${count}`);
+    paragraph.appendChild(text);
+    });
+    xhr.open('GET', 'https://api.github.com/repos/' + owner + '/' + repo + '/releases');
+    xhr.send(); 
+</script>
+
 <body>
     <div class="content">
         <div class="pure-g">
@@ -35,7 +55,8 @@
     </div>
     <div class="pure-g">
         <div class="pure-u-5-5 is-center content-width">
-            <a class="pure-button button-success" href="https://github.com/Crypto-Notepad/Crypto-Notepad/releases/latest/download/Crypto.Notepad.zip">Download for Windows</a>
+            <a class="pure-button button-success" href="https://github.com/Crypto-Notepad/Crypto-Notepad/releases/latest/download/Crypto.Notepad.zip">Download for Windows 
+                <br><small id="downloads"></small></a>
         </div>
     </div>
     <div class="content">
@@ -123,15 +144,14 @@
         <hr>
         <div class="pure-g content-width">
             <div class="pure-u-5-5 is-center">
-                <h3>Partners</h3>
+                <!-- <h3>Partners</h3>
                 <div class="partners-icons">
-				<a href="https://crypto-notepad.software.informer.com/" target="_blank"><img border="0" src="https://img.informer.com/awards/si-award-clean.png" alt="Software Informer Virus Free award" height="170" width="170" /></a>
                     <p>
                         <img src="https://i.imgur.com/o5hgnav.png" alt="FileHorse">
                         <a href="https://www.filehorse.com/download-crypto-notepad/" target="_blank">FileHorse</a>
                         <img src="https://i.imgur.com/7v2GHXE.png" alt="Portablefreeware">
                         <a href="https://www.portablefreeware.com/index.php?id=2873" target="_blank">Portablefreeware</a>
-                        <img src="img/maddownload.png" alt="Maddownload">
+                        <img src="https://i.imgur.com/WpLlkTl.png" alt="Maddownload">
                         <a href="https://maddownload.com/business-productivity/text-editors/crypto-notepad/" target="_blank">Maddownload</a>
                     </p>
                     <p>
@@ -142,7 +162,7 @@
                         <img src="https://i.imgur.com/aBhf1Si.png" alt="Download.hr">
                         <a href="https://www.download.hr/software-crypto-notepad.html" target="_blank">Download.hr</a>
                     </p>
-                </div>
+                </div> -->
                 <h3>Contacts</h3>
                 <div class="pure-menu pure-menu-horizontal contacts-icons">
                     <ul class="pure-menu-list contacts-padding">
