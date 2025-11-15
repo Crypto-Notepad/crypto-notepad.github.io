@@ -20,29 +20,84 @@
   	<link rel="stylesheet" href="css/marketing-old-ie.css">
   	<![endif]-->
     <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="css/marketing.min.css">
+  	<link rel="stylesheet" href="css/marketing.css">
     <!--<![endif]-->
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <script>
-    const owner = 'Crypto-Notepad';
-    const repo = 'Crypto-Notepad';
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', function(){
-    const releases = JSON.parse(this.responseText);
-    let count = 0;
-    for (let i = 0; i < releases.length; ++i) {
-        for (let j = 0; j < releases[i].assets.length; ++j) {
-            count += releases[i].assets[j].download_count;
+    document.addEventListener('DOMContentLoaded', function () {
+        const owner = 'Crypto-Notepad';
+        const repo = 'Crypto-Notepad';
+        const storageKey = 'crypto-notepad-downloads';
+        const downloadsElement = document.getElementById('downloads');
+
+        const updateDom = (count) => {
+            if (!downloadsElement) {
+                return;
+            }
+            downloadsElement.textContent = `Total downloads: ${count}`;
+        };
+
+        const readCache = () => {
+            if (!window.localStorage) {
+                return null;
+            }
+            try {
+                const cached = localStorage.getItem(storageKey);
+                if (!cached) {
+                    return null;
+                }
+                const parsed = JSON.parse(cached);
+                if (typeof parsed.count === 'number') {
+                    return parsed;
+                }
+            } catch (error) {
+                console.warn('Failed to read download cache', error);
+            }
+            return null;
+        };
+
+        const writeCache = (count) => {
+            if (!window.localStorage) {
+                return;
+            }
+            try {
+                localStorage.setItem(storageKey, JSON.stringify({ count, timestamp: Date.now() }));
+            } catch (error) {
+                console.warn('Failed to write download cache', error);
+            }
+        };
+
+        const cached = readCache();
+        if (cached) {
+            updateDom(cached.count);
         }
-    }
-    const paragraph = document.getElementById("downloads");
-    const text = document.createTextNode(`Total downloads: ${count}`);
-    paragraph.appendChild(text);
+
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', function () {
+            try {
+                const releases = JSON.parse(this.responseText);
+                let count = 0;
+                for (let i = 0; i < releases.length; ++i) {
+                    for (let j = 0; j < releases[i].assets.length; ++j) {
+                        count += releases[i].assets[j].download_count;
+                    }
+                }
+                if (!cached || cached.count !== count) {
+                    updateDom(count);
+                    writeCache(count);
+                }
+            } catch (error) {
+                console.error('Failed to parse download count', error);
+            }
+        });
+        xhr.addEventListener('error', function (error) {
+            console.error('Failed to fetch download count', error);
+        });
+        xhr.open('GET', 'https://api.github.com/repos/' + owner + '/' + repo + '/releases');
+        xhr.send();
     });
-    xhr.open('GET', 'https://api.github.com/repos/' + owner + '/' + repo + '/releases');
-    xhr.send(); 
 </script>
 
 <body>
@@ -54,9 +109,9 @@
         </div>
     </div>
     <div class="pure-g">
-        <div class="pure-u-5-5 is-center content-width">
-            <a class="pure-button button-success" href="https://github.com/Crypto-Notepad/Crypto-Notepad/releases/latest/download/Crypto.Notepad.zip">Download for Windows 
-                <br><small id="downloads"></small></a>
+        <div class="pure-u-5-5 is-center content-width download-cta">
+            <a class="pure-button button-success" href="https://github.com/Crypto-Notepad/Crypto-Notepad/releases/latest/download/Crypto.Notepad.zip">Download for Windows</a>
+            <small id="downloads" class="download-count"></small>
         </div>
     </div>
     <div class="content">
@@ -131,61 +186,14 @@
                             project. Any support is greatly appreciated. Thank you!
                         </p>
                     </div>
-<!--                     <div class="pure-u-5-5 is-center content-width">
-                        <a class="pure-button button-paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AK9FYCBAHV4U8&source=url" target="_blank">PayPal</a>
-                        <a class="pure-button button-ko-fi" href="https://ko-fi.com/sigmanor" target="_blank">Ko-fi</a>
-                        <a class="pure-button button-liberapay" href="https://liberapay.com/sigmanor" target="_blank">Liberapay</a>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content custom-ahref">
-        <hr>
-        <div class="pure-g content-width">
-            <div class="pure-u-5-5 is-center">
-                <!-- <h3>Partners</h3>
-                <div class="partners-icons">
-                    <p>
-                        <img src="https://i.imgur.com/o5hgnav.png" alt="FileHorse">
-                        <a href="https://www.filehorse.com/download-crypto-notepad/" target="_blank">FileHorse</a>
-                        <img src="https://i.imgur.com/7v2GHXE.png" alt="Portablefreeware">
-                        <a href="https://www.portablefreeware.com/index.php?id=2873" target="_blank">Portablefreeware</a>
-                        <img src="https://i.imgur.com/WpLlkTl.png" alt="Maddownload">
-                        <a href="https://maddownload.com/business-productivity/text-editors/crypto-notepad/" target="_blank">Maddownload</a>
-                    </p>
-                    <p>
-                        <img src="https://i.imgur.com/qQr5IZv.png" alt="Majorgeeks">
-                        <a href="https://www.majorgeeks.com/files/details/crypto_notepad.html" target="_blank">Majorgeeks</a>
-                        <img src="https://i.imgur.com/mPpwppP.png" alt="Softpedia">
-                        <a href="http://www.softpedia.com/get/Office-tools/Text-editors/Crypto-Notepad.shtml" target="_blank">Softpedia</a>
-                        <img src="https://i.imgur.com/aBhf1Si.png" alt="Download.hr">
-                        <a href="https://www.download.hr/software-crypto-notepad.html" target="_blank">Download.hr</a>
-                    </p>
-                </div> -->
-                <h3>Contacts</h3>
-                <div class="pure-menu pure-menu-horizontal contacts-icons">
-                    <ul class="pure-menu-list contacts-padding">
-                        <a href="https://t.me/Sigmanor" target="_blank">
-                            <i class="pure-menu-item fa fa-telegram fa-2x" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://github.com/Sigmanor" target="_blank">
-                            <i class="pure-menu-item fa fa-github fa-2x" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://www.fb.com/SlGMANOR" target="_blank">
-                            <i class="pure-menu-item fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-                        </a>
-                        <a href="mailto:sigmanor@pm.me" target="_blank">
-                            <i class="pure-menu-item fa fa-envelope fa-2x" aria-hidden="true"></i>
-                        </a>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
     <div class="footer l-box is-center">
         <hr>
-        <span class="white-ahref"> Created with ❤️ by <a href="https://sigmanor.github.io/" target="_blank">Sigmanor</a> </span>
+        <span class="white-ahref"> Created with ❤️ by <a href="https://sigmanor.github.io/links" target="_blank">sigmanor</a>
+        </span>
     </div>
     </div>
 </body>
